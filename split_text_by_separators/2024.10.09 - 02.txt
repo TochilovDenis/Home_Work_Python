@@ -1,0 +1,2 @@
+Опишите суть алгоритма деления строки на сегменты
+в этом коде https://github.com/mashida/learn-python/commit/73c448a4948e81a87b380e45817c9eb125daaa0b
