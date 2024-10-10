@@ -1,0 +1,6 @@
+class RefuseToCreateNewUser(Exception):
+    ...
+
+
+class NoMoreAttempts(Exception):
+    ...
