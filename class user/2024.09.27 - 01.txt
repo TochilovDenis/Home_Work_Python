@@ -1,0 +1,21 @@
+Дополните код методом add_user который на вход получает объект класс User и добавляет его в список self.users.
+
+Дополните код методом print_all_users, который выводит на печать пронумерованный список всех сохранённых
+пользователей в объекте UsersList.
+
+Исходный код
+
+class User:  # Описание класса User
+    def __init__(self, name, surname, patronymic, age):  # конструктор класса
+        self.name = name  # создание и инициализация переменной name
+        self.surname = surname  # создание и инициализация переменной surname
+        self.patronymic = patronymic  # создание и инициализация переменной patronymic
+        self.age = age  # создание и инициализация переменной age
+
+    def __str__(self):
+        return f"Фамилия: {self.name} | Имя: {self.name} | Отчество: {self.patronymic} | Возраст: {self.age}"
+
+
+class UsersList:
+    def __init__(self):
+        self.users = list()
