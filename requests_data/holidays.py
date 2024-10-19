@@ -8,17 +8,7 @@ LIST_HOLIDAY = list[DICT_HOLIDAY]
 
 def get_list_of_available_holiday() -> LIST_HOLIDAY:
     url = 'https://date.nager.at/api/v3/PublicHolidays/2024/RU'
-    payload: dict[str, str] = {
-        "date": "",             # дата праздника
-        "localName": "",        # название праздника зависит от кода страны
-        "name": "",             # название праздника на англ
-        "countryCode": "RU",    # код страны
-        "fixed": False,         # фиксированный
-        "global": True,         # глобальный
-        "counties": 0,          # округа null
-        "launchYear": 0,        # год запуска null
-        "types": ["Public"] }   # виды
-    res = requests.get(url=url, params=payload).json()
+    res = requests.get(url=url).json()
     return res
 
 
