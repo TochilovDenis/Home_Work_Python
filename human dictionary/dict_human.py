@@ -7,10 +7,20 @@ SURNAMES: list[str]    = ["Иванов", "Петров", "Сидоров", "К�
 PATRONYMICS: list[str] = ["Иванович", "Петрович", "Викторович", "Алексеевич"]
 
 
+class InvalidDateError(Exception):
+    ...
+
+
 class Human:
-    def __init__(self, name: str, surname: str, patronymic: str, birth_date: date):
-        self.name: str        = name
+    def __init__(self, surname: str, name: str, patronymic: str, birth_date: date):
+        if not isinstance(birth_date, date):
+            raise InvalidDateError("Неверная дата рождения")
+
+        if birth_date > date.today():
+            raise ValueError("Дата рождения не может быть в будущем")
+
         self.surname: str     = surname
+        self.name: str        = name
         self.patronymic: str  = patronymic
         self.birth_date: date = birth_date
 
@@ -23,7 +33,13 @@ class Human:
 
 
 def add_person(dictionary: dict[str, Human], person: Human) -> bool:
-    full_name: str = f"{"".join(person.surname)} {"".join(person.name)} {"".join(person.patronymic)}"
+    if not isinstance(dictionary, dict):
+        raise TypeError("dictionary должен быть словарем")
+
+    if not isinstance(person, Human):
+        raise TypeError("person должен быть экземпляром класса Human")
+
+    full_name: str = " ".join([person.surname, person.name, person.patronymic])
 
     if full_name in dictionary:
         print(f"Человек с ФИО: {full_name} уже существует в словаре.")
