@@ -41,6 +41,10 @@ def generate_birth_date() -> date:
     return date(year, month, day)
 
 
+def print_people_list(people_dict: dict[str, Human]):
+    print("\nСписок добавленных людей:")
+    for i, (full_name, person) in enumerate(people_dict.items(), 1):
+        print(f"{i}. {person}")
 
 
 def main():
@@ -69,6 +73,7 @@ def main():
             break
 
     print(f"\nРезультаты:")
+    print_people_list(people_dict)
     print(f"\nДобавлено людей: {total_additions}")
     print(f"Всего ошибок добавления: {total_errors}")
 
